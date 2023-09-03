@@ -1,0 +1,40 @@
+-- Create a table to store user information
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL, -- Hashed password
+  email VARCHAR(255) NOT NULL,
+  -- Add other user-related fields as needed
+);
+
+-- Create a table to store doctor recommendations
+CREATE TABLE doctor_recommendations (
+  recommendation_id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL, -- Foreign key referencing the users table
+  doctor_name VARCHAR(255) NOT NULL,
+  specialty VARCHAR(255),
+  review_score DECIMAL(3, 2), -- e.g., 4.75
+  -- Add other doctor recommendation-related fields as needed
+);
+
+-- Create a table to store prescriptions
+CREATE TABLE prescriptions (
+  prescription_id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL, -- Foreign key referencing the users table
+  medication_name VARCHAR(255) NOT NULL,
+  start_date DATE,
+  end_date DATE,
+  -- Add other prescription-related fields as needed
+);
+
+-- Create a table to store personal health tracking data
+CREATE TABLE health_metrics (
+  metric_id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL, -- Foreign key referencing the users table
+  metric_name VARCHAR(255) NOT NULL,
+  value DECIMAL(10, 2), -- e.g., weight, blood pressure, etc.
+  date DATE,
+  -- Add other health metric-related fields as needed
+);
+
+-- You can create additional tables as necessary for your project's specific needs.
